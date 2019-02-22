@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         AppCompatButton btnShow = findViewById(R.id.btn_show);
         setSupportActionBar(toolbar);
 
-        //action
+        
         btnShow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
