@@ -4,8 +4,8 @@ Primeros pasos para instalar y utilizar **fastlane**
 
 ## Instalación (Mac OS)
 - <kbd>xcode-select --install</kbd>
-- | ******** RubyGems ******** | &nbsp;******** Homebrew ******** |
- | :-------------------------------: | :--------------------------------: |
+- | ******** RubyGems ******** | &nbsp;******** Homebrew ******** |<br>
+ | :-------------------------------: | :--------------------------------: |<br>
 | &nbsp;&nbsp;<kbd>sudo gem install fastlane -NV</kbd> | &nbsp;&nbsp;&nbsp;&nbsp;<kbd>brew cask install fastlane</kbd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 
 - Agregar estas líneas en el archivo .profile
 		<kbd>export LC_ALL=en_US.UTF-8
