@@ -56,7 +56,7 @@ platform :android do
   private_lane :upload_to_slack do |options|    
     file_path = lane_context[SharedValues::GRADLE_APK_OUTPUT_PATH]
     file_name = file_path.gsub(/\/.*\//,"")
-    access_token = "xoxp-553346069987-552721571776-557714634947-d1405e5f7370be009fba17c722a65c1c"   
+    access_token = "xoxp-553346069987-552721571776-558944609639-3faddbb572c4d29458065f29fbd326d9"   
     #channel_name = "#fastlane"    
     sh "echo Uploading " + file_name + " to Slack"  
     sh "curl https://slack.com/api/files.upload -F token=\"" + access_token + "\" -F channels=\"" + channel_name + "\" -F title=\"" + file_name + "\" -F filename=\"" + file_name + "\" -F file=@" + file_path  
