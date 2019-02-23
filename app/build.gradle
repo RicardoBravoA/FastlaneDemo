@@ -16,10 +16,29 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    flavorDimensions "default"
+
+    productFlavors {
+        develop {
+            applicationId 'com.rba.fastlanedemo.develop'
+            flavorDimensions "default"
+        }
+
+        qa {
+            applicationId 'com.rba.fastlanedemo.qa'
+            flavorDimensions "default"
+        }
+
+        production {
+            applicationId 'com.rba.fastlanedemo'
+            flavorDimensions "default"
+        }
+    }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
