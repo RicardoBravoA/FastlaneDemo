@@ -43,14 +43,22 @@ platform :android do
   #develop
   desc "Deploy a new Develop Debug APK to " + channel_name + " Slack channel"
   lane :devDebug do    
-    gradle(task: "assembleDevDebug")   
+    gradle(
+      task: "assemble",
+      flavor: "dev",
+      build_type: "debug"
+    )   
     slack(message: "Build Successful! :beers:")   
     upload_to_slack() 
   end
 
   desc "Deploy a new Develop Release APK to " + channel_name + " Slack channel"
   lane :devRelease do |options|
-    gradle(task: "assembleDevRelease")   
+    gradle(
+      task: "assemble",
+      flavor: "dev",
+      build_type: "release"
+    )
     slack(message: "Build Successful! :beers:")   
     upload_to_slack() 
   end
@@ -59,13 +67,22 @@ platform :android do
   desc "Deploy a new Qa Debug APK to " + channel_name + " Slack channel"
   lane :qaDebug do    
     gradle(task: "assembleQaDebug")   
+    gradle(
+      task: "assemble",
+      flavor: "qa",
+      build_type: "debug"
+    )
     slack(message: "Build Successful! :beers:")   
     upload_to_slack() 
   end
 
   desc "Deploy a new Qa Release APK to " + channel_name + " Slack channel"
   lane :qaRelease do |options|
-    gradle(task: "assembleQaRelease")   
+    gradle(
+      task: "assemble",
+      flavor: "qa",
+      build_type: "release"
+    ) 
     slack(message: "Build Successful! :beers:")   
     upload_to_slack() 
   end
@@ -73,14 +90,22 @@ platform :android do
   #production
   desc "Deploy a new Production Debug APK to " + channel_name + " Slack channel"
   lane :prodDebug do    
-    gradle(task: "assembleProdDebug")   
+    gradle(
+      task: "assemble",
+      flavor: "prod",
+      build_type: "debug"
+    )  
     slack(message: "Build Successful! :beers:")   
     upload_to_slack() 
   end
 
   desc "Deploy a new Production Release APK to " + channel_name + " Slack channel"
   lane :prodRelease do |options|
-    gradle(task: "assembleProdRelease")   
+    gradle(
+      task: "assemble",
+      flavor: "prod",
+      build_type: "release"
+    )  
     slack(message: "Build Successful! :beers:")   
     upload_to_slack() 
   end
