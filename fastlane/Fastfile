@@ -16,7 +16,7 @@
 default_platform(:android)
 
 channel_name = "#fastlane"  
-slack_access_token = "token" 
+access_token = "token" 
 crashlytics_api_token = "2bb567abe7a7c6ac3ea8e3ea84c5415c53792427" 
 crashlytics_build_secret = "749c5ea49f6f9fe1b8e9c0fefb05747813db7a87d224734691e568bbe8113d6c" 
 
@@ -117,7 +117,10 @@ platform :android do
     )  
     crashlytics(
       api_token: crashlytics_api_token,
-      build_secret: crashlytics_build_secret
+      build_secret: crashlytics_build_secret,
+      notes: "Test",
+      emails: "richard90_15@hotmail.com, ricardobravo@outlook.com",
+      notifications: true
     )
     slack(message: "Build Successful! :beers:")   
     upload_to_slack() 
@@ -135,7 +138,7 @@ platform :android do
     file_name = file_path.gsub(/\/.*\//,"")
     #channel_name = "#fastlane"    
     sh "echo Uploading " + file_name + " to Slack"  
-    sh "curl https://slack.com/api/files.upload -F token=\"" + slack_access_token + "\" -F channels=\"" + channel_name + "\" -F title=\"" + file_name + "\" -F filename=\"" + file_name + "\" -F file=@" + file_path  
+    sh "curl https://slack.com/api/files.upload -F token=\"" + access_token + "\" -F channels=\"" + channel_name + "\" -F title=\"" + file_name + "\" -F filename=\"" + file_name + "\" -F file=@" + file_path  
   end
 
   #after_all do |lane|   
