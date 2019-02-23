@@ -20,7 +20,7 @@ android {
     flavorDimensions "default"
 
     productFlavors {
-        develop {
+        dev {
             applicationId 'com.rba.fastlanedemo.develop'
             flavorDimensions "default"
         }
@@ -30,7 +30,7 @@ android {
             flavorDimensions "default"
         }
 
-        production {
+        prod {
             applicationId 'com.rba.fastlanedemo'
             flavorDimensions "default"
         }

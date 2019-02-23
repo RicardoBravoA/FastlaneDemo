@@ -42,15 +42,15 @@ platform :android do
 
   #develop
   desc "Deploy a new Develop Debug APK to " + channel_name + " Slack channel"
-  lane :developDebug do    
-    gradle(task: "assembleDevelopDebug")   
+  lane :devDebug do    
+    gradle(task: "assembleDevDebug")   
     slack(message: "Build Successful! :beers:")   
     upload_to_slack() 
   end
 
   desc "Deploy a new Develop Release APK to " + channel_name + " Slack channel"
-  lane :developRelease do |options|
-    gradle(task: "assembleDevelopRelease")   
+  lane :devRelease do |options|
+    gradle(task: "assembleDevRelease")   
     slack(message: "Build Successful! :beers:")   
     upload_to_slack() 
   end
@@ -70,9 +70,17 @@ platform :android do
     upload_to_slack() 
   end
 
-  lane :release do    
-    desc "Deploy release APK"
-    gradle(task: "assembleRelease")   
+  #production
+  desc "Deploy a new Production Debug APK to " + channel_name + " Slack channel"
+  lane :prodDebug do    
+    gradle(task: "assembleProdDebug")   
+    slack(message: "Build Successful! :beers:")   
+    upload_to_slack() 
+  end
+
+  desc "Deploy a new Production Release APK to " + channel_name + " Slack channel"
+  lane :prodRelease do |options|
+    gradle(task: "assembleProdRelease")   
     slack(message: "Build Successful! :beers:")   
     upload_to_slack() 
   end
