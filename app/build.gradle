@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'fastlane'
+            keyPassword 'android'
+            storeFile file('../config/fastlane.keystore')
+            storePassword 'android'
+        }
+    }
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.rba.fastlanedemo"
@@ -12,13 +20,16 @@ android {
     }
     buildTypes {
         release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+        debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
     flavorDimensions "default"
-
     productFlavors {
         dev {
             applicationId 'com.rba.fastlanedemo.develop'
