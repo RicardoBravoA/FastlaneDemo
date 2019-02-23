@@ -43,10 +43,13 @@ platform :android do
   #develop
   desc "Deploy a new Develop Debug APK to " + channel_name + " Slack channel"
   lane :devDebug do    
+    gradle(task: "clean")
     gradle(
       task: "assemble",
       flavor: "dev",
-      build_type: "debug"
+      build_type: "debug",
+      print_command: false,  
+      print_command_output: false
     )   
     slack(message: "Build Successful! :beers:")   
     upload_to_slack() 
@@ -54,6 +57,7 @@ platform :android do
 
   desc "Deploy a new Develop Release APK to " + channel_name + " Slack channel"
   lane :devRelease do |options|
+    gradle(task: "clean")
     gradle(
       task: "assemble",
       flavor: "dev",
@@ -66,7 +70,7 @@ platform :android do
   #qa
   desc "Deploy a new Qa Debug APK to " + channel_name + " Slack channel"
   lane :qaDebug do    
-    gradle(task: "assembleQaDebug")   
+    gradle(task: "clean")
     gradle(
       task: "assemble",
       flavor: "qa",
@@ -78,6 +82,7 @@ platform :android do
 
   desc "Deploy a new Qa Release APK to " + channel_name + " Slack channel"
   lane :qaRelease do |options|
+    gradle(task: "clean")
     gradle(
       task: "assemble",
       flavor: "qa",
@@ -90,6 +95,7 @@ platform :android do
   #production
   desc "Deploy a new Production Debug APK to " + channel_name + " Slack channel"
   lane :prodDebug do    
+    gradle(task: "clean")
     gradle(
       task: "assemble",
       flavor: "prod",
@@ -101,6 +107,7 @@ platform :android do
 
   desc "Deploy a new Production Release APK to " + channel_name + " Slack channel"
   lane :prodRelease do |options|
+    gradle(task: "clean")
     gradle(
       task: "assemble",
       flavor: "prod",
